@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Dashboard</title>
+    <h1 style="text-align: center;">
+        <form action="/dashboard" method="POST">
+          Einar's Admin Dashboard:  
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+          Admin Name: {{name}}
+          <button type="submit" name = "action" value="signout">Sign-out!</button> 
+        </form>
+    </h1>
+  </head>
+  <body> 
+    <div>
+      <form action="/dashboard" method="POST">
+        <label for="subject">Subject:</label>
+        <br>
+        <input type="text" id="subject" name="subject" required>
+        <br>
+        <br>
+        <label for="message">Message:</label>
+        <br>
+        <textarea id="message" name="message"></textarea>
+        <br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>
