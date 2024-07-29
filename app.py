@@ -96,7 +96,7 @@ def dashboard():
             return redirect(url_for('dashboard'))
             
 @app.route('/calender', methods=['GET', 'POST'])
-def dashboard():
+def calender():
     if request.method == 'GET':
         return render_template("calender.html") 
     
