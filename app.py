@@ -7,7 +7,6 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY']="*******"
 
@@ -64,7 +63,7 @@ def index():
 def dashboard():
     if request.method == 'GET':
         return render_template("dashboard.html") 
-    else:
+    elif request.form['action'] == "mailsender":
         subject = request.form['subject']
         body = request.form['message']
         file = request.form['file']
@@ -94,6 +93,11 @@ def dashboard():
         except Exception as e:
             print(f"Failed to send email to {msg['To']}. Error: {str(e)}")
             return redirect(url_for('dashboard'))
+    else:
+        emails = db.child("emails").get().val()
+        emails.append(request.form['email'])
+        db.child("emails").set(emails)
+        return redirect(url_for('dashboard'))
             
 @app.route('/calender', methods=['GET', 'POST'])
 def calender():

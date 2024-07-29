@@ -13,7 +13,7 @@
     </h1>
   </head>
   <body> 
-    <div style="width:1000px; text-align: center;">
+    <div style="width:1000px;">
       <div style="width:500px; float:left;">
         <form action="/dashboard" method="POST">
           <label for="subject">Subject:</label>
@@ -31,11 +31,29 @@
           <br>
           <br>
           <br>
-          <button type="submit">Send</button>
+          <button type="submit" value = "mailsender" name = "action">Send</button>
         </form>
       </div>
-      <div style="width:500px; float:right;" class="scrollable">
-        fghj
+      <div style="width:500px; float:right;">
+        <ul id="container">
+          <li>Article 1</li>
+          <li>Article 2</li>
+          <li>Article 3</li>
+          <li>Article 4</li>
+          <li>Article 5</li>
+          <li>Article 6</li>
+          <li>Article 7</li>
+          <li>Article 8</li>
+        </ul>
+        <br>
+        <form action="/dashboard" method="POST">
+          <label for="subject">Email:</label>
+          <br>
+          <input type="text" id="email" name="email" required>
+          <br>
+          <br>
+          <button type="submit" value = "data" name = "action">Add Email!</button>
+        </form>
       </div>
     </div>
   </body>
