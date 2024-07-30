@@ -31,8 +31,8 @@ auth = firebase.auth()
 db = firebase.database()
 storage = firebase.storage()
 
-@app.route('/signin', methods=['GET', 'POST'])
-def signin():
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
     if request.method == 'GET':
         return render_template("signin.html") 
     else:
@@ -43,20 +43,6 @@ def signin():
             return redirect(url_for('dashboard'))
         except:
             error = "Womp it failed. Try again!"
-            return render_template("signin.html", error=error)
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'GET':
-        return render_template("signin.html") 
-    else:
-        email = request.form['email']
-        password = request.form['password']
-        try:
-            login_session['user'] = auth.sign_in_with_email_and_password(email, password)
-            return redirect(url_for('dashboard'))
-        except:
-            error = "Wrong email or password!"
             return render_template("signin.html", error=error)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -108,10 +94,10 @@ def send_email(recipient_email,subject,body,file):
     except Exception as e:
         print(f"Failed to send email to {recipient_email}. Error: {str(e)}")
             
-@app.route('/calender', methods=['GET', 'POST'])
-def calender():
+@app.route('/', methods=['GET', 'POST'])
+def home():
     if request.method == 'GET':
-        return render_template("calender.html") 
+        return render_template("home.html") 
     
 if __name__ == '__main__':
     app.run(debug=True)
